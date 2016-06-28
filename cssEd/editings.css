@@ -1,0 +1,855 @@
+/*
+* @Author: iceStone
+* @Date:   2016-01-11 11:23:18
+* @Last Modified by:   Marte
+* @Last Modified time: 2016-06-21 14:12:00
+*/
+
+body {
+  font-family: 'Helvetica Neue', Helvetica, 'Microsoft Yahei', 'Hiragino Sans GB', 'WenQuanYi Micro Hei', sans-serif;
+  background:#f2f2f2;
+}
+
+a{
+  text-decoration: none;
+  color: #ccc;
+}
+
+a:hover{
+  text-decoration: none;
+  color: #ccc;
+}
+
+.container{
+  min-width: 970px;
+}
+.paddingL_8 {
+  padding-left: 8px;
+}
+.displayN {
+  display: none;
+}
+
+.marginB_8{
+  margin-bottom: 8px;
+}
+
+.marginL_8{
+  margin-left: 8px;
+}
+
+.marginB_16{
+  margin-bottom: 16px;
+}
+
+.marginT_10{
+  margin-top: 10px;
+}
+
+.marginT_8{
+  margin-top: 8px;
+}
+
+.overflowH {
+  overflow: hidden;
+}
+
+.floatL {
+  float: left;
+}
+
+.pos_relative{
+  position: relative;
+}
+
+.padding_0{
+  padding: 0;
+}
+.padding_10 {
+  padding: 10px;
+}
+
+.color_333 {
+  color: #333333;
+}
+/**
+ * 字体图标引入
+ */
+
+@font-face {
+  font-family: '3DK';
+  src: url('../font/MiFie-Web-Font.eot') format('embedded-opentype'), url('../font/MiFie-Web-Font.svg') format('svg'), url('../font/MiFie-Web-Font.ttf') format('truetype'), url('../font/MiFie-Web-Font.woff') format('woff');
+}
+
+
+/* 所有的字体图标都是用I标签 */
+
+.icon {
+  font-family: '3DK';
+  font-style: normal;
+  font-weight: normal;
+}
+
+
+/**
+ * Bootstrap样式扩展
+ * 不建议直接覆盖样式，新加一个
+ */
+
+/*头部区域*/
+header{
+  border-bottom: 1px solid #000;
+  background: #333;
+  height: 54px;
+  position: absolute;
+  display: inline-block;
+  width: 100%;
+  z-index: 999;
+}
+
+header h4.navbar-text {
+  color: #ccc;
+  margin: 16px 6px;
+}
+
+.model_name {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 16px 6px;
+}
+
+.model_name a{
+  color: #fff; 
+}
+
+header .pull-right {
+  margin-top: 11px;
+  margin-right: 12px;
+}
+
+header .logo img {
+  margin-left: 18px;
+  width: 120px;
+  height: 26px;
+}
+
+header .pull-right .help {
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: underline;
+  padding-right: 10px;
+  color: #ccc;
+}
+
+header .help:hover {
+  color: #0B75B5;
+}
+
+header .pull-right a{
+  letter-spacing: 0px;
+  font-weight: 600;
+  padding: 5px 12px;
+  margin-left: 10px;
+}
+
+header a.btn-default {
+  background: #777;
+  border-color: #777;
+  color: #fff;
+  font-weight: normal;
+}
+
+header a.btn-default:hover {
+  background: #555;
+  border-color: #555;
+  color: #fff;
+}
+
+header a.btn-warning {
+  background: #ff9e3a;
+}
+header a.btn-warning:hover {
+  background: #FD8111;
+  border-color: #FD8111;
+}
+header a.btn-info {
+  background:#1caad9;
+}
+header a.btn-info:hover {
+  background:#0B75B5;
+  border-color: #0B75B5;
+}
+
+/*内容区域主体*/
+/*editor_panel*/
+.editor{
+  position: absolute;
+  width: 320px;
+  width: 100%;
+  height: 100%;
+  background: #eee;
+}
+.editor_panel {
+  width: 320px;
+  position: relative;
+  left: 0;
+  top: 0;
+  height: 100%;
+  background-color: rgb(89, 89, 89);
+
+}
+
+.editor_panel> div {
+  height: 100%;
+}
+
+.editor_panel>div>ul>li {
+  text-align: center;
+  width: 64px;
+  border-left: 1px solid #000;
+  background: rgb(61, 61, 61);
+}
+
+.editor_panel .nav {
+  height: 40px;
+  border-bottom: 1px solid #333;
+}
+
+.editor_panel .nav li.active a{
+  background-color: #4d4d4d;
+  color: #fff;
+}
+
+.editor_panel .nav li a:hover {
+  background:#4d4d4d;
+}
+
+.editor_panel .nav li a:active .glyphicon{
+  color:#1caad9;
+}
+#setMain {
+  height: 100%;
+  display: block;
+  position:absolute;
+  width: 320px;
+  padding-top: 54px;
+  background: #333;
+}
+#setMain .editor_panel .nav a,.editor_panel .nav a:focus{
+  border: none;
+  border-radius: 0px;
+  height: 40px;
+  position: relative;
+}
+
+.editor_panel .nav .glyphicon {
+  font-size: 18px;
+}
+
+.editor_panel .nav-tabs > li > a {
+  margin-right: 0px;
+}
+
+/*edit下面选项菜单*/
+.tab-content {
+  height: 100%;
+  position:absolute;
+  overflow: hidden;
+  padding-bottom: 40px;
+}
+
+.tab-content .panel-group .panel {
+  border-radius: 0px;
+  background: rgb(71,71,71);
+}
+
+.tab-content > .tab-pane {
+  width: 320px;
+}
+.tab-content .panel-default > .panel-heading {
+    background: rgb(51,51,51);
+    padding: 6px;
+}
+
+.tab-content .panel-default {
+    border-color: #000;
+}
+
+.panel-group .panel-heading + .panel-collapse > .panel-body, .panel-group .panel-heading + .panel-collapse > .list-group {
+    border-top: 1px solid #000;
+}
+
+.tab-content .panel-heading .panel-title>a {
+  color: #ccc;
+  font-size: 12px;
+  text-decoration: none;
+}
+
+.panel-group .panel-heading .caret {
+  transition: all .3s ease;
+  transform: rotate(0deg);
+}
+
+.tab-content .panel-body {
+  color: #eee;
+  background: #595959;
+}
+
+.tab-content .panel-group {
+  margin-bottom: 0px;
+}
+
+.title {
+  font-size: 12px;
+  margin: 0 4px;
+  font-weight: 500;
+}
+
+/*一般*/
+.transform90 {
+  transform: rotate(90deg);
+}
+.transform-90 {
+  transform: rotate(-90deg);
+}
+
+
+
+/*相机领域的视点，滑动条样式*/
+/* .setView {
+  margin: 14px 0;
+}
+
+.example-val{
+  display: inline-block;
+  margin-left: 10px;
+  width: 68px;
+  height: 24px;
+  background: #111;
+  border-radius: 4px;
+  line-height: 24px;
+  text-align: center;
+  font-size: 12px;
+}
+#slider-range{
+  height: 8px;
+  background: #1caad9;
+  box-shadow: none;
+  border: none;
+}
+.noUi-origin{
+  background: #333;
+}
+
+.noUi-handle:before,.noUi-handle:after {
+    content: "";
+    height: 0px;
+    width: 0px;
+    background: transparent;
+}
+
+.noUi-horizontal .noUi-handle {
+  width: 16px;
+  height: 12px;
+  border: none;
+  left: -6px;
+  top: -2px;
+  box-shadow: none;
+}
+.rangeSlider{
+  width: 100%;
+  margin-top: 7px;
+}
+
+#slider-range{
+  display: inline-block;
+  width: 186px;
+}
+
+渲染模式选择
+.rander {
+  margin-top: 10px;
+}
+#collapseOne .btn-group {
+  margin-top: 6px;
+}
+#collapseOne .btn-group .btn-default {
+  background: #333;
+  border: none;
+}
+
+#collapseOne .btn-group .btn-default:hover {
+  background: #444;
+}
+
+#collapseOne .btn-group .btn {
+  padding: 10px 33px;
+}
+
+#collapseOne .btn-group .active,#collapseOne .btn-group .active:visited {
+  color: #359AFF;
+  background: #222;
+}
+
+#collapseOne .shading {
+  margin-top: 10px;
+}
+#c_setLight02
+#collapseOne .shading .btn-group .btn-danger, #c_setLight02 .shading .btn-group .btn-danger {
+  border: none;
+}
+
+#collapseOne .shading .btn-group, #c_setLight02 .shading .btn-group {
+  width: 100%;
+}
+
+#collapseOne .shading .btn-group .btn, #c_setLight02 .shading .btn-group .btn {
+  font-size: 12px;
+  width: 100%;
+  text-align: left;
+  height: 32px; 
+  padding: 0px 10px;
+  line-height: 28px;
+}
+
+#collapseOne .shading .btn .caret, #c_setLight02 .shading .btn .caret{
+  margin-top: 13px;
+  float: right;
+}
+
+#collapseOne .shading .btn-info, #c_setLight02 .shading .btn-info {
+  background: #222;
+  border: 1px solid #333;
+}
+
+#collapseOne .shading .dropdown-menu, #c_setLight02 .shading .dropdown-menu {
+  width: 288px;
+  top: 30px;
+  border-radius: 0px 0px 3px 3px;
+  background: #444;
+  margin: 0px;
+  padding: 0px;
+}
+
+#collapseOne .shading .dropdown-menu li, #c_setLight02 .shading .dropdown-menu li {
+    text-align: left;
+    width: 100%;
+    height: 28px;
+    border: none;
+    background: #444;
+}
+
+#collapseOne .shading .dropdown-menu li a:hover {
+    background: #666;
+}
+
+#collapseOne .shading .dropdown-menu li a, #c_setLight02 .shading .dropdown-menu li a {
+  border: none;
+  line-height: 28px;
+  padding: 0px 10px;
+  font-size: 12px;
+}
+
+#collapse部分
+#collapseTwo .rangeSlider {
+  width: 240px;
+  display: inline-block;
+  margin-left: 10px;
+
+}
+#collapseTwo #slider-range {
+  width: 150px;
+  display: inline-block;
+}
+
+#collapseTwo .setView {
+  margin: 4px 0px;
+}
+颜色选取插件
+
+#picker {
+  margin:0;
+  padding:0;
+  border:0;
+  width:28px;
+  height:28px;
+  border-right:28px solid #222d54;
+  box-shadow: 0px 0px 0px 1px #111;
+  cursor: pointer;
+}
+
+开关按钮样式
+ .bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-primary, .bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-primary {
+  background: #202020;
+}
+
+.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-default, .bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-default {
+  background: #202020;
+}
+
+.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-default, .bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-default {
+  color: #eee;
+}
+
+.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-primary, .bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-primary {
+  color: #1caad9;
+}
+
+.bootstrap-switch {
+  border: 1px solid #111;
+  border-radius: 2px;
+  float: right;
+  margin-top: -2px;
+}
+
+.bootstrap-switch.bootstrap-switch-focused {
+    border-color: #111;
+    outline: none; 
+    box-shadow:none;       
+}
+
+.bootstrap-switch.bootstrap-switch-inverse.bootstrap-switch-on .bootstrap-switch-label, .bootstrap-switch.bootstrap-switch-off .bootstrap-switch-label {
+  border-radius: 2px;
+
+}
+
+.bootstrap-switch .bootstrap-switch-label {
+  background: #666;
+} 
+
+设置背景类型部分
+
+#collapseThree .setBgType .nav li {
+  width: 93px;
+  border-left: none;
+  background: transparent;
+}
+
+#collapseThree .setBgType .nav a {
+  line-height: 20px;
+  background: #444;
+}
+
+#collapseThree .setBgType .nav a:hover {
+  background: #4d4d4d;
+}
+
+#collapseThree .setBgType .nav .active a{
+  background: transparent;
+}
+
+#collapseThree .setBgType ul {
+  border-bottom: none;
+}
+
+#collapseThree .setBgType .settings {
+  background: #777;
+  width: 279px;
+  border-radius: 6px 6px 0px 0px;
+  border-radius: 5px;
+}
+
+ #collapseThree .setBgType .settings .left {
+  border-top-left-radius: 5px;
+}
+
+#collapseThree .setBgType .settings .right {
+  border-top-right-radius: 5px;
+}
+
+.borderTopLeftR_5 {
+  border-top-left-radius: 5px;
+} 
+
+.borderTopRightR_5 {
+  border-top-right-radius: 5px;
+} 
+
+.fontStyle {
+  font-size: 10px;
+  color: #ccc;
+}
+.fontA_Style {
+  text-decoration: underline;
+}
+.fontA_Style:hover {
+  color:#FFFFFF;
+}
+
+#collapseThree .setBgType .settings .tab-pane {
+  padding: 10px;
+}
+
+#collapseThree .setBgType .settings .btn-group button {
+  width: 65px;
+  height: 32px;
+  background: #333;
+  color: #ccc;
+  border: none;
+}
+
+#collapseThree .setBgType .settings .btn-group .active {
+  color:#1B88AC;
+  background: #1a1a1a;
+}
+
+.btn:focus, .btn:active:focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn.active.focus {
+    outline: none;
+    
+  }
+
+#collapseThree #slider-range {
+  width: 176px;
+}
+
+背景类型图片选取部分
+
+#collapseThree #img .list-group {
+
+  background: #A3A3A3;
+}
+#collapseThree #img .list-group li{
+  width: 250px;
+  height: 42px;
+  border:none;
+  padding: 5px;
+  background: #777;
+  border-radius: 0px;
+  cursor: pointer;
+}
+
+#collapseThree #img .list-group li:hover {
+  background: #848484;
+}
+#collapseThree #img .list-group li.active {
+  background: #929292;
+}
+
+
+
+#collapseThree #img .list-group .text {
+  display: inline-block;
+  float: left;
+  line-height: 32px;
+
+}
+#collapseThree #img .list-group li a {
+  color: #EDEDED;
+  font-size: 14px;
+  text-decoration: none;
+  font-style: normal;
+}
+#collapseThree #img .list-group li span{
+  width: 32px;
+  height: 32px;
+  background: #333;
+  display: inline-block;
+  margin-right: 14px;
+  float: left;
+}
+
+#collapseThree #img .text, #c_setLight02 .text {
+  font-size: 12px;
+  color: #ccc;
+}
+
+#collapseThree #img .text a, #c_setLight02 .text a {
+  color: #eee;
+  text-decoration: underline;
+}
+
+#pickerBgColor .colpick {
+  margin: 0 auto;
+}
+
+后处理样式
+
+#collapseFour #keli .panel {
+  border: none;
+  border-radius: 5px;
+  background: #777;
+
+}
+
+#collapseFour #keli .panel-heading {
+  background: #666;
+  border: none;
+}
+
+#collapseFour #keli .panel-body {
+  border: none;
+  background: transparent;
+
+}
+
+
+#collapseFour .example-val {
+  width: 57px;
+}
+
+#collapseFour .collapseOneCheckBox {
+  height: 32px;
+}
+
+#collapseFour .collapseOneCheckBox > label {
+  top: 14px;
+}
+
+#collapseFour .padding {
+  padding: 6px 15px 15px;
+}
+
+#collapseFour .rangeSlider {
+  margin-top: 0px;
+}
+
+#collapseFour .title {
+  margin-top: 10px;
+}
+
+设置灯光部分
+#light_jiaBtn {
+  color: #eee;
+  font-weight: 600;
+  font-size: 12px;
+  padding: 0px 15px;
+  width: 250px;
+  height: 28px;
+  border-radius: 4px;
+  border: 2px solid #777;
+  background: #777;
+}
+
+#light_jiaBtn:hover {
+  background: #5e5e5e;
+  border-color: #5e5e5e;
+}
+
+设置小图片部分
+#envSmallImg .smallImg {
+  width: 32px;
+  height: 32px;
+  display: inline-block;
+  background-image: url(../images/shortCut01.jpg);
+  background-position: center center;
+  background-size: cover;
+}
+
+#c_setLight02 .shading .dropdown-menu li {
+  height: 48px;
+  line-height: 32px;
+  color: #eee;
+  padding: 8px;
+  cursor: pointer;
+}
+
+#c_setLight02 .shading .dropdown-menu li:hover {
+  background: #4d4d4d;
+}
+
+#showDigPic {
+  width: 286px;
+  height: 128px;
+  border: 1px solid #555;
+  background: url('../images/evnPicture.jpg') no-repeat top left;
+  background-size: cover;
+  margin-top: 10px;
+}
+
+
+圆形加载进度条
+#indicatorContainer {
+  position: absolute;
+  bottom: 60px;
+  right: 60px;
+
+}
+
+#indicatorContainer canvas{
+  width: 90px;
+  height: 90px;
+}
+
+滚动条样式
+body {
+  scrollbar-arrow-color: #000000;
+  scrollbar-face-color: #000;
+  scrollbar-3dlight-color: #000;
+  scrollbar-track-color: #000;
+
+} */
+
+/* 右键菜单样式 */
+ #rightMenu {
+    width: 105px;
+    /*height: auto;*/
+    
+    background: #fefefe;
+    position: absolute;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    z-index: 9999;
+    display: none;
+  }
+  #rightMenu ul,li{
+    list-style: none;
+    margin-bottom: 4px;
+    padding: 0px;
+  }
+  #rightMenu li > a {
+    text-decoration: none;
+    color: #333;
+    font-size: 12px;
+    font-weight: normal;
+    display: block;
+    line-height: 20px;
+    padding: 0 4px;
+  }
+
+  #rightMenu li > a:hover{
+    background: #00ACFF;
+    color: #fff;
+  }
+
+  .shuxing{
+    background: #fff;
+  }
+
+  /*pro属性显示*/
+  #pro {
+    background: #F9FBFF;
+    border-right: 1px solid #D1D3D6;
+    border-left: 1px solid #D1D3D6;
+    border-bottom: 1px solid #D1D3D6;
+    
+  }
+  #pro h5 {
+    color: #444;
+    line-height: 28px;
+    padding: 0;
+    font-weight: bold;
+    text-align: center;
+    background: #E3EBF7;
+    margin: 0px;
+    border-top: 1px solid #D1D3D6;
+
+  }
+
+  #pro span {
+    display: inline-block;
+    width: 129px;
+    line-height: 24px;
+    color: #555;
+    font-size: 12px;
+    padding:0px 5px;
+    overflow: hidden;
+    vertical-align: middle;
+    box-sizing: content-box;
+  }
+
+  #pro>div>div>div {
+    border-top: 1px solid #D1D3D6;
+  }
+
+

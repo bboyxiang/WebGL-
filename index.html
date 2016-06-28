@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+  <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+  <title>bim</title>
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.css">
+  
+  <!-- treejs的样式 -->
+  <link rel="stylesheet" type="text/css" href="css/style.min.css" />
+  <!-- 调节的css样式 -->
+  <link rel="stylesheet" href="cssEd/editings.css">
+
+  <!-- zTree样式 -->
+  <link rel="stylesheet" type="text/css" href="cssEd/metroStyle.css" />
+  <!--[if lt IE 9]>
+      <script src="lib/html5shiv/html5shiv.js"></script>
+      <script src="lib/respond/respond.min.js"></script>
+    <![endif]-->
+  <style type="text/css">
+  html,
+  body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+  
+  .body {
+    position: absolute;
+    overflow: hidden;
+    left: 320px;
+    right: 0px;
+    top: 54px;
+    bottom: 0px;
+  }
+  
+  
+  </style>
+   <link rel="stylesheet" href="css/style.min.css" /> 
+</head>
+
+<body>
+  <header>
+    <div class="container-fluid">
+      <div class="row">
+        <a href="" class="logo navbar-text">
+          <img src="images/logo01.png" alt="BPROBIM" title="BPROBIM" />
+        </a>
+
+        <div class="pull-right">
+          <a href="" class="help btn btn-link">Help</a>
+          <a class="btn btn-default">用户登陆</a>
+
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="editor">
+    <!-- 头部区域 -->
+    <!-- /头部区域 -->
+    <!-- 内容主体区域 -->
+    <section id="setMain">
+      <div class="editor_panel">
+        <div>
+          <!-- Nav tabs -->
+          <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active" data-toggle="tooltip" data-placement="bottom" title="树结构/属性">
+              <a href="#set" aria-controls="set" role="tab" data-toggle="tab">
+                <span class="glyphicon glyphicon-tree-conifer" aria-hidden="true"></span>
+              </a>
+            </li>
+            <li role="presentation" data-toggle="tooltip" data-placement="bottom" title="视点/批注">
+              <a href="#light" aria-controls="light" role="tab" data-toggle="tab">
+                <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+              </a>
+            </li>
+            <li role="presentation" data-toggle="tooltip" data-placement="bottom" title="选择集管理">
+              <a href="#material" aria-controls="material" role="tab" data-toggle="tab">
+                <span class="glyphicon glyphicon-hand-up" aria-hidden="true"></span>
+              </a>
+            </li>
+            <li role="presentation" data-toggle="tooltip" data-placement="bottom" title="任务管理">
+              <a href="#annotations" aria-controls="annotations" role="tab" data-toggle="tab">
+                <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+              </a>
+            </li>
+            <li role="presentation" data-toggle="tooltip" data-placement="bottom" title="工程管理">
+              <a href="#animation" aria-controls="animation" role="tab" data-toggle="tab">
+                <span class="glyphicon glyphicon-tower" aria-hidden="true"></span>
+              </a>
+            </li>
+          </ul>
+          <!-- Tab panes -->
+          <div class="tab-content " id="Default">
+          
+            <!-- 树结构/属性 -->
+            <div role="tabpanel" class="tab-pane active" id="set">
+              
+              <!-- 显示树部分 -->
+              <div class="panel-group" id="accordion01" role="tablist" aria-multiselectable="false">
+                <div class="panel panel-default">
+                  <div class="panel-heading" role="tab" id="headingOne">
+                    <h4 class="panel-title">
+                      <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                      <span class="caret"></span>
+                        树结构
+                      </a>
+                    </h4>
+                  </div>
+                  <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                    <div class="panel-body padding_0" id="trees">
+                      <!-- 树结构部分 -->
+                      <div id='treedom' class="color_333">
+                        <div id='tree'></div><!--树结构-->
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- /显示树部分 -->
+
+              <!-- 属性设置部分 -->
+              <div class="panel-group" id="accordion02" role="tablist" aria-multiselectable="false">
+                <div class="panel panel-default">
+                  <div class="panel-heading" role="tab" id="headingTwo">
+                    <h4 class="panel-title">
+                      <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                      <span class="caret"></span>
+                        属性
+                      </a>
+                    </h4>
+                  </div>
+
+                  <div id="collapseTwo" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingTwo">
+                    <div class="panel-body padding_0" id="shuxing">
+                      <div id="treeAttribute" class="padding_10">
+
+                        <div id="pro" class="color_333">
+                          
+
+                        </div>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- /属性设置部分 -->
+            </div>
+            <!-- /树结构/属性 -->
+
+            <div role="tabpanel" class="tab-pane" id="light">
+              <!-- zTree -->
+              <div class="content_wrap">
+                  <div class="zTreeDemoBackground left">
+                      <ul id="treeDemo" class="ztree"></ul>
+                  </div>
+                  
+              </div>
+
+              
+            </div>
+
+            <div role="tabpanel" class="tab-pane" id="material">
+              <h3>title="选择集管理"</h3>
+            </div>
+
+            <div role="tabpanel" class="tab-pane" id="annotations">
+              <h3>title="任务管理"</h3>
+            </div>
+
+            <div role="tabpanel" class="tab-pane" id="animation">
+              <h3>title="工程管理"</h3>
+            </div>
+          </div>
+          
+          
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- zTree菜单 -->
+  <div id="rMenu">
+      <ul>
+          <li id="m_add" onclick="addTreeNode();">增加节点</li>
+          <li id="m_del" onclick="removeTreeNode();">删除节点</li>
+          <li id="m_addP" onclick="addNode();">增加同级节点</li>
+          <li id="m_delP" onclick="removeNode();">删除父节点</li>
+          <li id="m_check" onclick="checkTreeNode(true);">Check节点</li>
+          <li id="m_unCheck" onclick="checkTreeNode(false);">unCheck节点</li>
+          <li id="m_reset" onclick="resetTree();">恢复zTree</li>
+      </ul>
+  </div>
+
+  <!-- 模型显示部分 -->
+  <div class="body" id="con">
+    <!-- 右键菜单 -->
+    <div id="rightMenu">
+      <ul>
+        <li><a href="#">保存图片</a></li>
+        <li><a href="#">添加背景图片</a></li>
+        <li><a href="#">显示当前属性</a></li>
+        <li><a href="#">显示坐标</a></li>
+        <li><a href="#">改变背景色</a></li>
+        <li><a href="#">快速聚焦</a></li>
+      </ul>
+    </div>
+  </div>
+  <!-- 圆形加载金条 -->
+  <!--<div id="indicatorContainer"></div>-->
+  <!-- /内容主体区域 -->
+  <!-- webGL3D library frame:Three.js -->
+  <!--<script src="lib/three.js"></script>-->
+  <!-- 加载模型操作的库 -->
+  <!--<script src="lib/core.js"></script>-->
+  <!-- 通过cdn加载jQ库 -->
+  <!-- <script src="//cdn.bootcss.com/jquery/3.0.0-beta1/jquery.min.js"></script> -->
+  <script type="text/javascript" src="lib/jquery.min.js"></script>
+  <!-- js树加载插件 -->
+  <script src="lib/jstree.min.js"></script>
+
+
+  <!-- 项目配置 -->
+  <!--<script src='plugs/config.js'></script>-->
+
+  <!-- /项目配置 -->
+
+  <!-- bootstrap js插件 -->
+  <script src="lib/bootstrap/js/bootstrap.js"></script>
+  
+  <!-- 调节的js文件 -->
+  <script src="js/editings.js"></script>
+  <script src='threedk.js'></script>
+
+   <!-- zTreejs -->
+  <script type="text/javascript" src="lib/zTree/jquery.ztree.all.min.js"></script>
+  <script type="text/javascript" src="lib/zTree/zTreeMain.js"></script>
+  
+  <script src="js/main.js"></script>
+  
+  <script>
+
+  // 地址栏取参数
+  function GetQueryString(name) {
+   var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+   var r = window.location.search.substr(1).match(reg);
+   if(r!=null)return  unescape(r[2]); return null;
+  };
+
+  // 去掉数组中重复的项
+  function GetUnique(inputArray) {
+    var outputArray = [];
+    for (var i = 0; i < inputArray.length; i++) {
+      if ((jQuery.inArray(inputArray[i], outputArray)) == -1) {
+          outputArray.push(inputArray[i]);
+      }
+    }
+    
+    return outputArray;
+  };
+
+  // 动态加载属性方法
+  function addStr(m, dom) {
+    if(m.Value) {
+      dom.innerHTML += '<div>'+'<span>' + m.Name +'</span>'+'<span style="border-left: 1px solid #D1D3D6">' + m.Value + '</span>'+'</div>' ;
+    } else {
+       dom.innerHTML += '<div>'+'<span style="border-right: 1px solid #D1D3D6">' + m.Name +'</span>'+'<span>' + m.Value + '</span>'+'</div>' ;
+    }
+  };
+
+  threedk.initApp({
+  
+    body:'con', //该参数 是三维视口div 的ID，生成的 三维视口会添加到该div中。
+    ops:{
+        useTex: GetQueryString('usetex'),
+        key: GetQueryString('proj') || 'wptest'//工程名称，当前场景的工程名称。加载不同的场景，在此替换名称即可。
+    },
+    url: 'http://probim.oss-cn-beijing.aliyuncs.com/if1/index.html',
+    reday:function(d,err){ // 工程准备完毕后的回掉。
+        
+        if(err)console.log(err); //如果有错误，会打印错误。
+        
+        var me = this;
+       
+        this.start(); //如果没有错误，调用此方法开始加载工程。
+
+        var pro = document.getElementById('pro'),
+            proAObjrr = [],
+            proArr = [],
+            noReGroup = [],
+            // 存储当前选中的对象
+            currentTree = null;
+
+        //监听 视图中模型选中事件，返回值是 当前选中对象的id
+        //当视图中，任何构件对象被选中，都会触发此事件。参数a 是当前被选中的构件id
+        this.addlisten('select',function(a){
+          // 先判断当前选取的对象与前一次选择的对象是否一样，一样的话下边的方法就不执行
+          if (currentTree === a) return;
+          currentTree = a;
+
+          //通过id 查询 构件属性
+          //此方法是获取构件属性的方法，参数a是需要获取属性的构建id。aa是返回的请求的构件属性。
+          me.api('getProperty',a,function(aa){
+            proArr = [];
+            // 存储proArr中部不重复的项
+            noReGroup = [];
+
+            proAObjrr = [];
+
+            pro.innerHTML = '';
+
+            aa.$values.map(m=>{
+              proAObjrr.push(m);
+
+              proArr.push(m.Group);
+              
+            })
+
+            noReGroup = GetUnique(proArr);
+
+            for (var i = 0, len = noReGroup.length; i < len; i++) {
+              var str = '';
+              str = '<div>'+
+                      '<h5>' + noReGroup[i] +'</h5>'+
+                      '<div id="'+ noReGroup[i] +'"></div>'+
+                    '</div>'
+              pro.innerHTML += str;
+            }
+
+            for (var i = 0, len = noReGroup.length; i < len; i++) {
+              var curDom = document.getElementById(noReGroup[i]);
+              for (var k = 0, len = proAObjrr.length; k < len; k++) {
+                if (proAObjrr[k].Group === noReGroup[i] ) {
+                  addStr(proAObjrr[k], curDom);
+                }
+              }
+            }
+            // console.log(aa);
+            //pro 是一个div 标签，这里把获取到的属性，添加到pro标签中。
+            // pro.innerHTML = s;
+          })
+
+        });
+
+          //获取 树的 数据，此方法请求的是树结构的json。用户可以自定义去开发树结构的显示。
+          //有很多jquery的插件可以生成，或者自己开发。这里使用jstree插件。
+          //
+          //  <script type="text/javascript" src="lib/jquery.min.js">
+      //  <script src="lib/jstree.min.js">
+      //  <link rel="stylesheet" href="css/style.min.css" /> 
+      //
+          //  使用 $('#tree' ).jstree(),生成树结构，jstree具体使用可以参考官网文档 https://www.jstree.com/
+          //  aa 是树结构的json
+          
+          me.api('getTree',function(aa){
+            
+            //通过jquery插件生成树
+            me.tree =  $('#tree' ).jstree({
+              'core': {
+                "themes": {
+                  dots: true,
+                  stripes: true,
+                  icons: false,
+                  "variant": "large"
+                },
+                'data': aa.lev
+              }
+          });
+          
+        var iss = false;
+        
+        //为树 监听事件 ,该事件是树结构，被选择或者切换的事件。
+        //判断双击事件，通过500毫秒内是否出现第二次连续点击判断，执行相应操作。
+          me.tree.on('changed.jstree', function(e, data) {
+            
+            //得到构件id
+            var id = data.instance.get_node(data.selected[0]).id;
+            
+            //判断是否双击
+            if (iss) {
+              
+              //双击执行的操作,聚焦到构件
+              me.api('zoom',id)
+                
+            } else {
+              
+              //单击,设置选中构件
+              me.api('setSelect',id)
+              
+              iss = true;
+              setTimeout(function() {
+                iss = false;
+              }, 500);
+            }
+          });
+
+          })
+    }
+});
+
+
+</script>
+  
+</body>
+
+</html>

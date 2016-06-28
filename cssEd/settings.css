@@ -1,0 +1,189 @@
+/*
+* @Author: iceStone
+* @Date:   2016-01-11 11:23:18
+* @Last Modified by:   Marte
+* @Last Modified time: 2016-05-04 12:12:50
+*/
+
+body {
+  font-family: 'Helvetica Neue', Helvetica, 'Microsoft Yahei', 'Hiragino Sans GB', 'WenQuanYi Micro Hei', sans-serif;
+  background:#f2f2f2;
+}
+
+.container{
+  min-width: 970px;
+}
+.paddingL {
+  padding-left: 0px;
+}
+.displayN {
+  display: none;
+}
+/**
+ * 字体图标引入
+ */
+
+@font-face {
+  font-family: '3DK';
+  src: url('../font/MiFie-Web-Font.eot') format('embedded-opentype'), url('../font/MiFie-Web-Font.svg') format('svg'), url('../font/MiFie-Web-Font.ttf') format('truetype'), url('../font/MiFie-Web-Font.woff') format('woff');
+}
+
+
+/* 所有的字体图标都是用I标签 */
+
+.icon {
+  font-family: '3DK';
+  font-style: normal;
+  font-weight: normal;
+}
+
+.test01{
+ 
+  
+}
+.test02{
+  background: #fff;
+}
+
+
+/**
+ * Bootstrap样式扩展
+ * 不建议直接覆盖样式，新加一个
+ */
+
+/*头部区域*/
+header{
+  padding: 20px 0px;
+}
+/*左侧选项栏*/
+#setMain {
+  margin-bottom: 90px;
+}
+
+#settings > .nav > li {
+  margin-bottom: 8px;
+}
+
+#settings > .nav > .active > a {
+  color: #fff;
+}
+
+#settings > .nav > li > a {
+  border-radius: 14px;
+  padding: 5px 15px;
+  color: #555;
+}
+
+#settings > .nav > li > a:hover, #settings > .nav > li > a:focus {
+  background-color: #fff;
+} 
+
+#settings > .nav-pills > li.active > a, #settings > .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
+    color: #fff;
+    background-color: #1caad9;
+}
+
+/* 右侧选项栏*/
+#editings {
+  padding-bottom: 18px;
+  padding-left: 34px;
+}
+#editings h4 {
+  margin: 26px 0px;
+}
+
+#editings hr {
+  border-top: 1px solid #ddd;
+}
+
+#editings .form-horizontal .control-label {
+  text-align: left;
+  font-weight: normal;
+  font-size: 16px;
+}
+
+#editings .form-horizontal input {
+  height: 48px;
+}
+
+#editings .form-horizontal .control-label {
+  padding-top: 12px;
+}
+
+#editings .form-horizontal .info {
+  color: #999;
+  padding-top: 5px;
+}
+
+#editings .form-horizontal button {
+  color: #fff;
+  font-size: 16px;
+  padding: 16px 81px;
+  background-color: #1caad9;
+  border-radius: 4px;
+}
+
+#editings .form-horizontal button:hover {
+  color: #fff;
+  background-color: #1592C1;
+}
+
+#editings .form-horizontal .number {
+  color:#999;
+}
+
+#editings .form-control {
+  height: 48px;
+}
+
+#editings textarea.form-control  {
+  height: 120px;
+  resize:none;
+}
+
+#editings .form-horizontal .panel button {
+  padding: 6px 8px;
+  background: #ddd;
+  border: 1px solid #ddd;
+  color: #999;
+  font-size: 12px;
+  margin: 0px 10px 10px 0px; 
+}
+
+#editings .form-horizontal .panel button:hover {
+  color:#fff;
+  background: #999;
+}
+
+/*脚注部分*/
+footer {
+    padding-bottom: 18px;
+}
+
+footer .navbar-default {
+  min-width: 768px;
+  border-color: transparent;
+  background-color: transparent;
+  font-weight: 500;
+}
+
+footer .navBot{
+  padding-left: 12px;
+  width: 100%;
+  font-size: 10px;
+  display: block;
+}
+
+footer .navbar-default .navBot > li > a {
+  color: #aaa;
+  padding: 2px 6px;
+}
+
+footer .navbar-default .navBot > li > a:hover {
+  color: #888;
+}
+
+footer .navbar-default .navBot > li,footer .navbar-default .navTop > li {
+  float: left;
+  display: inline-block;
+}

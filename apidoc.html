@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+		<style>
+			
+			
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			html,body{
+				width:100%;
+				height:100%;
+				overflow: hidden;
+			}
+			#con{
+				position: absolute;
+				top:0px;
+				left:300px;
+				right:0px;
+				bottom:0px;
+			}
+			
+			#win{
+				
+				width:300px;
+				height:100%;
+			}
+			
+			
+			#tree{
+				height:50%;
+				width:100%;
+				background: #aaa;
+			}
+			
+			
+			#pro{
+				
+				
+				height:50%;
+				width:100%;
+				background: #ccc;
+			}
+			
+		</style>
+		
+	</head>
+	<body>
+		
+		<div id="win">
+			
+			
+			<div id='tree'></div><!--树结构-->
+			<div id='pro'></div><!--属性显示-->
+			
+			
+		</div>
+		
+		<div id='con'></div><!--三维窗口-->
+		
+<!-- js树加载插件 -->
+<script type="text/javascript" src="lib/jquery.min.js"></script>
+<script src="lib/jstree.min.js"></script>
+<link rel="stylesheet" href="css/style.min.css" /> 
+<!-- js树加载插件 -->
+
+<!-- Bim库文件 -->
+<script src="threedk.js"></script>
+		
+<script>
+		
+
+threedk.initApp({
+	
+    body:'con', //该参数 是三维视口div 的ID，生成的 三维视口会添加到该div中。
+    url:'/3d/index.html',
+    ops:{
+        key:'rac_basic_sample_project' //工程名称，当前场景的工程名称。加载不同的场景，在此替换名称即可。
+    },
+    reday:function(d,err){ // 工程准备完毕后的回掉。
+        
+        if(err)console.log(err); //如果有错误，会打印错误。
+        
+        var me = this;
+       
+        this.start(); //如果没有错误，调用此方法开始加载工程。
+        
+        
+        //监听 视图中模型选中事件，返回值是 当前选中对象的id
+        //当视图中，任何构件对象被选中，都会触发此事件。参数a 是当前被选中的构件id
+        this.addlisten('select',function(a){
+        	
+        	
+        	//通过id 查询 构件属性
+        	//此方法是获取构件属性的方法，参数a是需要获取属性的构建id。aa是返回的请求的构件属性。
+        	me.api('getProperty',a,function(aa){
+
+        		var s = '';
+        		aa.$values.map(m=>{
+        			s += m.Name +':' +m.Value + '</br>';
+        		})
+        		
+        		//pro 是一个div 标签，这里把获取到的属性，添加到pro标签中。
+        		pro.innerHTML = s;
+        	})
+
+        });
+        
+
+
+        	//获取 树的 数据，此方法请求的是树结构的json。用户可以自定义去开发树结构的显示。
+        	//有很多jquery的插件可以生成，或者自己开发。这里使用jstree插件。
+        	//
+        	//  <script type="text/javascript" src="lib/jquery.min.js">
+			//  <script src="lib/jstree.min.js">
+			//  <link rel="stylesheet" href="css/style.min.css" /> 
+			//
+        	//  使用 $('#tree' ).jstree(),生成树结构，jstree具体使用可以参考官网文档 https://www.jstree.com/
+        	//  aa 是树结构的json
+        	
+        	me.api('getTree',function(aa){
+        		
+        		
+
+	        	console.log(aa)
+	        	
+	        	//通过jquery插件生成树
+	        	me.tree =  $('#tree' ).jstree({
+			        'core': {
+			          "themes": {
+			            dots: true,
+			            stripes: true,
+			            icons: false,
+			            "variant": "large"
+			          },
+			          'data': aa.lev
+			        }
+			    });
+			    
+			    
+			  var iss = false;
+			  
+			  //为树 监听事件 ,该事件是树结构，被选择或者切换的事件。
+			  //判断双击事件，通过500毫秒内是否出现第二次连续点击判断，执行相应操作。
+		      me.tree.on('changed.jstree', function(e, data) {
+		      	
+		      	//得到构件id
+		      	var id = data.instance.get_node(data.selected[0]).id;
+		      	
+		      	
+		      	
+		      	
+		      	
+		        //判断是否双击
+		        if (iss) {
+		        	
+		        	//双击执行的操作,聚焦到构件
+		        	me.api('zoom',id)
+		        		
+		        		
+		        		
+		        } else {
+		        	
+		        	//单击,设置选中构件
+		        	me.api('setSelect',id)
+		        	
+		          iss = true;
+		          setTimeout(function() {
+		            iss = false;
+		          }, 500);
+		        }
+		      });
+
+        	})
+        
+        
+        
+        
+    }
+});
+
+
+</script>
+		
+</body>
+</html>
