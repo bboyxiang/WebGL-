@@ -166,7 +166,8 @@ var cof = {
     ifcss:{
         width:"100%",
         height:"100%",
-        border:"none"
+        border:"none",
+        
     },
     defmes:{
         appid:'3dk.com',
@@ -187,8 +188,8 @@ var cof = {
 
 
 threedk.initApp = function (ops){
+var dom = document.querySelector(ops.body);
 
-var dom = document.getElementById(ops.body);
 if(!dom)throw 'dom标签找不到';
 ops.el = dom;
 return new App(ops)
@@ -272,122 +273,59 @@ api(n,ops,cak){
 
 g.threedk = threedk;
 
-
-}(window||this);
-
-/*
-dk.lib([
-'jquery.min.js',
-'threejs.min.js'
-],'libs/');
-
-dk.assets([
-'jquery.min.js',
-'threejs.min.js'
-],'assets/');
-
-
-var congif = {
-
-
+// 地址栏取参数
+function GetQueryString(name) {
+var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+var r = window.location.search.substr(1).match(reg);
+if(r!=null)return  unescape(r[2]); return null;
 };
 
+// 注册标签bim365-viewer
+var bim365 = Object.create(HTMLElement.prototype);
 
-dk.register('init',function(d,a,b){
+// 元素创建执行回掉
+bim365.createdCallback = function() {
+    this.style.position = 'absolute';
+    this.style.overflow = 'hidden';
+    this.style.left = '0';
+    this.style.right = '0px';
+    this.style.top = '0';
+    this.style.bottom = '0px';
 
-    require('')
-
-
-
-    a({kldj:223});
-
-
-});
-
-
-dk.register({
-    name:'init',
-    ms:'api的描述和使用信息',
-    exp:'使用模板',
-    intface:function(){
+var token = this.getAttribute('token');
+var projid = this.getAttribute('projid');
+var fun = this.getAttribute('onload');
 
 
+// var me = this;
+
+ threedk.initApp({
+  
+    body:'bim365-viewer', //该参数 是三维视口div 的ID，生成的 三维视口会添加到该div中。
+    ops:{
+        useTex: GetQueryString('usetex'),
+        key: projid || 'wptest'//工程名称，当前场景的工程名称。加载不同的场景，在此替换名称即可。
+    },
+    url: 'http://probim.oss-cn-beijing.aliyuncs.com/if1/index.html',
+    reday:function(d,err){ // 工程准备完毕后的回掉。
+        
+        if(err)console.log(err); //如果有错误，会打印错误。
+        this.start();
+        var me = this;
+        if(window[fun])window[fun](me)
 
     }
 });
 
 
-
-dk.getURL('name.aa');
-
-
-dk.register('start',function(){
-
-
-});
-
-
-dk.init('key','key');
-
-var app = new App('main','id');
-
-app.initView({},function(v,err){
-
-var apis = v.getApis();
-
-v.start();
-
-});
-
-app.on('reday',function(v){
-
-    v.start();
-
-});
-
-
-app {
-
-    user:
-    id:
-    libs;[id,id,id],
-    gz:[],
-    assets:[id,id],
-    jiage:0,
-    type:, '积分','钱','免费'
-    zan:
-    miaoshu:
-    apis:[]
-
 };
 
 
-file {
-
-    id:
-    name:
-    der:
-    url:
-    type:'img/.jpg',
-    user:
-    zt:  //状态  上传完毕、未上传、正在上传、处理过
-
-};
+var bim365Viewer = document.registerElement('bim365-viewer', {
+      prototype: bim365,
+  });
 
 
-glzip {
+}(window||this);
 
-    hdr:
-    box
-    texture:
-    normals:
-
-    geo:
-
-    glsl:
-
-
-}
-
-*/
 

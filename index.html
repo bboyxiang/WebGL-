@@ -30,15 +30,13 @@
     overflow: hidden;
   }
   
-  .body {
+  .viewCon {
     position: absolute;
-    overflow: hidden;
     left: 320px;
-    right: 0px;
     top: 54px;
+    right: 0px;
     bottom: 0px;
   }
-  
   
   </style>
    <link rel="stylesheet" href="css/style.min.css" /> 
@@ -261,37 +259,19 @@
 <!-- /rMenuEye菜单 -->
 
   <!-- 模型显示部分 -->
-  <div class="body" id="con">
-    <!-- 右键菜单 -->
-    <div id="rightMenu">
-      <ul>
-        <li><a href="#">保存图片</a></li>
-        <li><a href="#">添加背景图片</a></li>
-        <li><a href="#">显示当前属性</a></li>
-        <li><a href="#">显示坐标</a></li>
-        <li><a href="#">改变背景色</a></li>
-        <li><a href="#">快速聚焦</a></li>
-      </ul>
-    </div>
+ 
+
+  <div class="viewCon">
+
+    <bim365-viewer token='79faf82271944fe38c4f1d99be71bc9c' projid='wptest' onload='fun'></bim365-viewer>
+    
   </div>
-  <!-- 圆形加载金条 -->
-  <!--<div id="indicatorContainer"></div>-->
+
   <!-- /内容主体区域 -->
-  <!-- webGL3D library frame:Three.js -->
-  <!--<script src="lib/three.js"></script>-->
-  <!-- 加载模型操作的库 -->
-  <!--<script src="lib/core.js"></script>-->
-  <!-- 通过cdn加载jQ库 -->
-  <!-- <script src="//cdn.bootcss.com/jquery/3.0.0-beta1/jquery.min.js"></script> -->
+  
   <script type="text/javascript" src="lib/jquery.min.js"></script>
   <!-- js树加载插件 -->
   <script src="lib/jstree.min.js"></script>
-
-
-  <!-- 项目配置 -->
-  <!--<script src='plugs/config.js'></script>-->
-
-  <!-- /项目配置 -->
 
   <!-- bootstrap js插件 -->
   <script src="lib/bootstrap/js/bootstrap.js"></script>
@@ -310,50 +290,8 @@
   
   <script>
 
-  // 地址栏取参数
-  function GetQueryString(name) {
-   var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
-   var r = window.location.search.substr(1).match(reg);
-   if(r!=null)return  unescape(r[2]); return null;
-  };
-
-  // 去掉数组中重复的项
-  function GetUnique(inputArray) {
-    var outputArray = [];
-    for (var i = 0; i < inputArray.length; i++) {
-      if ((jQuery.inArray(inputArray[i], outputArray)) == -1) {
-          outputArray.push(inputArray[i]);
-      }
-    }
-    
-    return outputArray;
-  };
-
-  // 动态加载属性方法
-  function addStr(m, dom) {
-    if(m.Value) {
-      dom.innerHTML += '<div>'+'<span>' + m.Name +'</span>'+'<span style="border-left: 1px solid #D1D3D6">' + m.Value + '</span>'+'</div>' ;
-    } else {
-       dom.innerHTML += '<div>'+'<span style="border-right: 1px solid #D1D3D6">' + m.Name +'</span>'+'<span>' + m.Value + '</span>'+'</div>' ;
-    }
-  };
-
-  threedk.initApp({
-  
-    body:'con', //该参数 是三维视口div 的ID，生成的 三维视口会添加到该div中。
-    ops:{
-        useTex: GetQueryString('usetex'),
-        key: GetQueryString('proj') || 'wptest'//工程名称，当前场景的工程名称。加载不同的场景，在此替换名称即可。
-    },
-    url: 'http://probim.oss-cn-beijing.aliyuncs.com/if1/index.html',
-    reday:function(d,err){ // 工程准备完毕后的回掉。
-        
-        if(err)console.log(err); //如果有错误，会打印错误。
-        
-        var me = this;
-       
-        this.start(); //如果没有错误，调用此方法开始加载工程。
-
+    function fun(me){ // 工程准备完毕后的回掉。
+        console.log(me)
         var pro = document.getElementById('pro'),
             proAObjrr = [],
             proArr = [],
@@ -363,14 +301,15 @@
 
         //监听 视图中模型选中事件，返回值是 当前选中对象的id
         //当视图中，任何构件对象被选中，都会触发此事件。参数a 是当前被选中的构件id
-        this.addlisten('select',function(a){
+        me.addlisten('select',function(a){
           // 先判断当前选取的对象与前一次选择的对象是否一样，一样的话下边的方法就不执行
           if (currentTree === a) return;
           currentTree = a;
 
           //通过id 查询 构件属性
           //此方法是获取构件属性的方法，参数a是需要获取属性的构建id。aa是返回的请求的构件属性。
-          me.api('getProperty',a,function(aa){
+          me.api('getProperty',a,function(aa, url){
+
             proArr = [];
             // 存储proArr中部不重复的项
             noReGroup = [];
@@ -412,16 +351,6 @@
 
         });
 
-          //获取 树的 数据，此方法请求的是树结构的json。用户可以自定义去开发树结构的显示。
-          //有很多jquery的插件可以生成，或者自己开发。这里使用jstree插件。
-          //
-          //  <script type="text/javascript" src="lib/jquery.min.js">
-      //  <script src="lib/jstree.min.js">
-      //  <link rel="stylesheet" href="css/style.min.css" /> 
-      //
-          //  使用 $('#tree' ).jstree(),生成树结构，jstree具体使用可以参考官网文档 https://www.jstree.com/
-          //  aa 是树结构的json
-          
           me.api('getTree',function(aa){
             
             //通过jquery插件生成树
@@ -433,11 +362,12 @@
                   icons: false,
                   "variant": "large"
                 },
-                'data': aa.lev
+                
+                'data' : aa.lev
               }
-          });
+            });
           
-        var iss = false;
+          var iss = false;
         
         //为树 监听事件 ,该事件是树结构，被选择或者切换的事件。
         //判断双击事件，通过500毫秒内是否出现第二次连续点击判断，执行相应操作。
@@ -445,6 +375,17 @@
             
             //得到构件id
             var id = data.instance.get_node(data.selected[0]).id;
+
+            var zi =  data.instance.get_node(data.selected[0]);
+
+            if(!zi.original.issc){
+              console.log(zi.original)
+              zi.original.children = zi.original._children;
+              zi.original._children = null;
+              zi.original.issc = true;
+              
+            }
+            // console.log('data', data.instance.get_node(data.selected[0]) )
             
             //判断是否双击
             if (iss) {
@@ -465,8 +406,35 @@
           });
 
           })
+        }
+
+    // 地址栏取参数
+  function GetQueryString(name) {
+   var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+   var r = window.location.search.substr(1).match(reg);
+   if(r!=null)return  unescape(r[2]); return null;
+  };
+
+  // 去掉数组中重复的项
+  function GetUnique(inputArray) {
+    var outputArray = [];
+    for (var i = 0; i < inputArray.length; i++) {
+      if ((jQuery.inArray(inputArray[i], outputArray)) == -1) {
+          outputArray.push(inputArray[i]);
+      }
     }
-});
+    
+    return outputArray;
+  };
+
+  // 动态加载属性方法
+  function addStr(m, dom) {
+    if(m.Value) {
+      dom.innerHTML += '<div>'+'<span>' + m.Name +'</span>'+'<span style="border-left: 1px solid #D1D3D6">' + m.Value + '</span>'+'</div>' ;
+    } else {
+       dom.innerHTML += '<div>'+'<span style="border-right: 1px solid #D1D3D6">' + m.Name +'</span>'+'<span>' + m.Value + '</span>'+'</div>' ;
+    }
+  };
 
 
 </script>
